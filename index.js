@@ -37,7 +37,7 @@ function authenticateToken(req, res, next) {
 
   if (token == null) return res.sendStatus(401)
 
-  jwt.verify(token, process.env.TOKEN_SECRET, (err, user) => {
+  jwt.verify(token, process.env.TOKEN_SECRETE, (err, user) => {
     req.log.info(err);
 
     if (err) return res.sendStatus(403)
@@ -49,5 +49,5 @@ function authenticateToken(req, res, next) {
 }
 
 function generateAccessToken(secrete) {
-    return jwt.sign(secrete, process.env.TOKEN_SECRET, { expiresIn: '1800s' });
+    return jwt.sign(secrete, process.env.TOKEN_SECRETE, { expiresIn: '1800s' });
   }
